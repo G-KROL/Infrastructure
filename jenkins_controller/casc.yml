@@ -9,6 +9,18 @@ jenkins:
       permissions:
           - "Overall/Administer:panda"
   NumExecutors: 0
+  nodes:
+  - permanent:
+      labelString: "agent"
+      launcher:
+        ssh:
+          credentialsId: "jenkins_agent"
+          host: "192.168.44.44"
+          port: 2222
+          sshHostKeyVerificationStrategy: "nonVerifyingKeyVerificationStrategy"
+      name: "agent"
+      remoteFS: "/home/jenkins/agent"
+      retentionStrategy: "always"
 credentials:
     system:
       domainCredentials:
@@ -26,44 +38,33 @@ credentials:
               privateKeySource:
                 directEntry:                
                   privateKey: |
-                    -----BEGIN OPENSSH PRIVATE KEY-----
-                    b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABlwAAAAdzc2gtcn
-                    NhAAAAAwEAAQAAAYEA7wGlhoSibCIPvK3XnKH9Csv6Ip1MzRrQLwzKL1kKE3cwUHb2NfJM
-                    U1m5MxnVKuwKWXvZIWAr0jKYhlrkn6gHVG3BRX2wthGD+bw/py8dfI13XkZRMbFsAkqVHQ
-                    rcMxzT9JN62oYoweQCciS2eFYcOoLrmCQItcL0nekLn+kynD6RzeAGZ0dHpsgOSAKMJcI1
-                    OLHzGs0m/yF9DfC2PvLYSGKlmBuZber7OzrEZLo4kJVUy8X56BpeQx178HxcCsEJNhRbno
-                    tYxrj3yX1TMSVdVAHMZ7gAnsFLd7VYgRmnqdaQGV4mb0ccscU6pX4kNQlZ17kBU3wczMdL
-                    A9bHp9BMjlov9jX/gMLDg0ulNb5+ksDA9GSiAmiFKkDhbzsdG0QnaXM0tJIKSTTcmbMA7c
-                    NwHCwHtquc3pH90/3Oi8wyOl1/SwtmFq2ZiFXzGfGMYyuZb+TqIxsqkmucH/0eS1yfYTjj
-                    gCaa29eaU/De2NpXnTgY2FD64vbsL1JmiVZgGjL3AAAFiJ5oBtOeaAbTAAAAB3NzaC1yc2
-                    EAAAGBAO8BpYaEomwiD7yt15yh/QrL+iKdTM0a0C8Myi9ZChN3MFB29jXyTFNZuTMZ1Srs
-                    Cll72SFgK9IymIZa5J+oB1RtwUV9sLYRg/m8P6cvHXyNd15GUTGxbAJKlR0K3DMc0/STet
-                    qGKMHkAnIktnhWHDqC65gkCLXC9J3pC5/pMpw+kc3gBmdHR6bIDkgCjCXCNTix8xrNJv8h
-                    fQ3wtj7y2EhipZgbmW3q+zs6xGS6OJCVVMvF+egaXkMde/B8XArBCTYUW56LWMa498l9Uz
-                    ElXVQBzGe4AJ7BS3e1WIEZp6nWkBleJm9HHLHFOqV+JDUJWde5AVN8HMzHSwPWx6fQTI5a
-                    L/Y1/4DCw4NLpTW+fpLAwPRkogJohSpA4W87HRtEJ2lzNLSSCkk03JmzAO3DcBwsB7arnN
-                    6R/dP9zovMMjpdf0sLZhatmYhV8xnxjGMrmW/k6iMbKpJrnB/9Hktcn2E444AmmtvXmlPw
-                    3tjaV504GNhQ+uL27C9SZolWYBoy9wAAAAMBAAEAAAGAKsKDp65hFLF/WUVM1uQQTncx2D
-                    GGRQewCUrjfVcTu2nOhgbSg9JGn37k6GSNw7EZJOtIbHU1QdT1fswSLRI1xYAhXNpg3CIE
-                    F5D7XmDKiLcSjRZNfnN8nGhVhy2jOa3FqfMcvq3T6uRtH5i74ImfYUR8++oueL5ZX0sLXl
-                    +tQ1DaaxfSbXXONuOB0pZKFpNJTExh7wCXInwOUIkpQdfWpBSqBa2iZIzux6j66/55Ejz1
-                    P8O6szDMfntu6haFrRLdx32fh/oyFEZPtL+dipJBJ0HrB63eRliPY6XNHD9Jg94tRP4eBC
-                    AqU0tIJnbdUXp9w7NJZQ8dL3/CAraH12q5MgnzuSsbd1N/iaHnWBS3MIle6tyS7pj7zCH4
-                    mV4IO2c4EYwaXawuStusUAhm2cQYNTJc5xv8i+52cjL7aGeMWErEEPZNJclC5i0ZUaprti
-                    Yq+qYN9sE3NGE4ME5uRyatiowWthLLUQsiv3Va1fF4y6AiJkXE5TL3iyDu19dU8kjxAAAA
-                    wQDbFmGeGaI1C4oC4WhElqSHI4WL8ic05Rw/aXOV+oLahTP9rlSbRzfB7n11mV/BB2h1gA
-                    Z6qn0+ErebChkrUagcqpyDk+0cV76jAG+AK2Y/jIBPeT7KOemsKr0y9TqCDIqpOGdPjyr+
-                    pW5hhzFOYIIVZBPi5HrU4lngDxn+tMoZ1kNi3mMN/HtWmxBe5paTd3op5bTIya/d1j4AhK
-                    09DxX2XbVDMiguCNqwB5qn4TVSddRUzEJoHkztO5RiPMHYRCsAAADBAPwlPchsOju9W1Hc
-                    YtRTHDPBkTxp8vh3VvXVFRIx2SKGLt/uJMeTo9APgh92smhAClodFmwurWuE+7NCxxepUI
-                    NKTUQcoW2lAk7AflqvQPaYiFZF2duOI4XJnM/s0oSX82yLpFTyFBq1w4qiCs9LZ47HGcNo
-                    bog7KhdX4yEV6w3M/nP1zGiwMhZ4XQkaZgaiKlAktvpoAzPiZT/4MwyqvvTCincSqfiwhm
-                    WIV9GcCK17C7BpOTPSoHxrp4TjAY6MKQAAAMEA8qj8e7bXIu/SSTmdlkUrzhxq6AmbD8r5
-                    5U1v6ErIt6kWSZYEyzhzi1KQdtq2SOSprnMsgZcNjTYjKCFc/HqM7891okBkazdIAOtJOO
-                    ZAv5/nTc4h+Mkq9+XAm8FGvIAne3h/dRNPTk8U9eXzmr9XwjKOl5tliNyz+e0KXlro1Y4H
-                    O4LluXcn1W1fPxyYNjMUPAC6EtGMEzjrYnCtYJp/3sUNdyyVKuNl4clEH5TMG10ee6OnVO
-                    JiqnD50ghpJKofAAAADXBhbmRhQHZhZ3JhbnQBAgMEBQ==
-                    -----END OPENSSH PRIVATE KEY-----
+                    -----BEGIN RSA PRIVATE KEY-----
+                    MIIEpAIBAAKCAQEAmicV5fguBrJiHK7F0Ppqkv7fUjbBa7Y+S333Zza/PvWuNFFB
+                    w19ZintulPKEmqwnIi2BLV1rFrZdVZkEuiQHVSOb2SktidDbeqHvgB/ctj4S+sLa
+                    lLHpdmiR1JPMNdw35LfsOrWQUMQrswQ71kbeobKa1bib1qCAjGWp1TqF2/gXycfd
+                    d95hv7r4hf64LRKp+Qqk2x1jdXFLPo3otBjpX8kK/xkez+XD+m2sXucsQnm6IZYG
+                    2Lw68FE9mQUpSRyGqm623gRf8ooAnFggPc+Oj7mynP6iHA2OanhbpXctJqhHaTCC
+                    wy43K7YnZ6eML0WvHMWZeMPXzWBsCvAuev2/ZwIDAQABAoIBAEJle2UmVIzF4MSB
+                    8upkMetGpGIA+6atRH+3rgxi5FT19SbLqQvB0gt3xtWY78y/QcvS1cT4a9vIiMMJ
+                    uaODSTU+tS4AMoEd2KslfMcu8h389qfTrdpGF0zNFaL+VgMM63Y0UiendJWVKU1e
+                    EXfl5pa3G0Ha1iTH1Raj41bYcjegI1kNl1chilQs+iUNviQAmfMB5FAZaz4BcNnk
+                    KdGZiVQDxT7t5LPXcjNmRlzIBBz/VLtj6u7D8cM7Jwp0mN+apAlIZ212CFzWpNRl
+                    Bgy1x53xyPWk++Jr3Ti5ewdxIGwu4cDsET18MUOA1bMEQsWamCFSrw+TR7bKGVB4
+                    WuQOA+ECgYEA55e/K++vlpOH4GT/YelNZaKmXs/Qzip0KxyQbRzHhPk8Y/ZNz7Zj
+                    jxw60anwdkEheiloBBtw3O5+gVidy8UJh5LZgZhPiZc85bluoKRyDGtRHKmJqTc5
+                    DpX0A3DquF1lshcFSNornYSiwryp09YYfCxyL9O/X9zbabfQxscgchMCgYEAqmYL
+                    l41A4dRhsBtpc6HrFcyCBrAodU18UdZF2ymWubUvl89pzWWmkqbo3xrXbtKNvclO
+                    IVUCz3MkJ4qguUrfDWv+Qc6QCXGMIz0T2L/26rE4Ksv4kV4RHq11nmQa6dZKHHN0
+                    KF/yQEVwGpf29OBK22fLKAl7GPyCr7y1A2VIR90CgYAWyvaDqnlLhoWO7iG8TyvQ
+                    3usk1aslP0RjodINCxIP4j+xTuJlmPu/b/XSALmryckzrrOQA+tdsxM8Q650CZZg
+                    g3FoscbSMdJKga+Dm+ulkUJQYdcskkTJTLTRSeGv93E0z9MzUlWMkSs7oznLoXyT
+                    bARo9JwXITNu+ipQBfUJhQKBgQCTxel5pctFzYxmUG90E1CvV+rPaAe+KtOMmTl9
+                    piSLqsC6c+q6cNQzTEKZ8UoxVrILi7+REotcYutQy101M+QaXLRkV4H8Xpd8m+RR
+                    TbERuV0PaFKJpr1MEHv3P7NDZU5iPBHZTdPlvxJITc+ib70bZ3j8oLQ7aAjh5NJK
+                    PpSflQKBgQDk1DqibVOtmTadXDno2dYpZFX4my0ucqHAKVAUQREyKqkLdhHq8osy
+                    vHoVFMY0B2SYTiTNEa4Pe8rv+zaXliYVZoq2P/XbEK4qoWl2QpWxTSz4cYHUoiZN
+                    o1epS4clbUspxKat9tbIIRccKa9GWXVDNLih8TslLCBoL/knJc+aqw==
+                    -----END RSA PRIVATE KEY-----
 
 tool:
   sonarRunnerInstallation:
@@ -76,6 +77,8 @@ tool:
                id: "4.8.0.2856" 
 
 unclassified:
+  location:
+    url: "http://192.168.44.44:8880"
   sonarGlobalConfiguration:
       buildWrapperEnabled: false
       installations:
