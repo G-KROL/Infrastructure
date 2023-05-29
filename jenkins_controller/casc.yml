@@ -1,8 +1,4 @@
 jenkins:
-  jobs:
-    - file: /usr/share/jenkins/ref/jobs/backend.groovy
-    - file: /usr/share/jenkins/ref/jobs/frontend.groovy
-    - file: /usr/share/jenkins/ref/jobs/app_of_apps_.groovy
   securityRealm:
     local:
       users:
@@ -25,6 +21,10 @@ jenkins:
       name: "agent"
       remoteFS: "/home/jenkins/agent"
       retentionStrategy: "always"
+jobs:
+    - file: /usr/share/jenkins/ref/jobs/backend.groovy
+    - file: /usr/share/jenkins/ref/jobs/frontend.groovy
+    - file: /usr/share/jenkins/ref/jobs/app_of_apps_.groovy
 credentials:
     system:
       domainCredentials:
