@@ -79,6 +79,15 @@ tool:
            installers:
            - sonarRunnerInstaller:
                id: "4.8.0.2856" 
+  terraform:
+     installations:
+     - name: "Terraform"
+       properties:
+       - installSource:
+           installers:
+           - terraformInstaller:
+               id: "20413-linux-amd64"            
+  
 
 unclassified:
   location:
